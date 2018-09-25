@@ -1,0 +1,1 @@
+For this assignment I used WUnderground's weather API to show the high and low temperatures for 3 cities (San Francisco, Boston, New York) in the U.S. for the next 3 days. Fetch is used to retrive the data from the API. The appropriate fields from the response are placed into p tags. 
