@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>3-Day Forecast</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+	span {
+		display: block;
+	}
+	
+	.fillIn {
+		display: inline;
+	}
+</style>
+
+<!--jQuery must come first in order for the next libraries to work correctly-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/us-map/1.0.1/jquery.usmap.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>U.S. State Data</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div id="map" style="width: 350px; height: 250px;"></div>
+			<div id="clicked-state"></div>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col">
+			<h2>{State}</h2>
+			<span> Population: </span>
+			<span class="fillIn"> Hello</span>
+			<span> Population Rank: </span>
+			
+			<span> Median Age:  </span>
+			
+			<span> Mean Commute(minutes): </span>
+			
+			<span> Median Household Income: </span>
+			
+			<span> Rank of Income: </span>
+			
+			<span> Median Property Value: </span>
+			
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		let fillData = $("span");
+		
+		let stateData = {};
+		const url = 'https://api.datausa.io/api/?show=geo&sumlevel=state&required=age,pop,mean_commute_minutes,income,income_rank,pop_rank,median_property_value&year=latest'; 
+		
+		const ageIndex = 2;
+		const popIndex = 3;
+		const commuteIndex = 4;
+		const incomeIndex = 5; 
+		const incomeRankIndex = 6;
+		const popRankIndex = 7
+		const medianValueIndex = 8;
+		
+		const stateMap = {
+			AL: 0, AK: 1, AZ: 2, AR: 3, CA: 4, CO: 5, CT: 6, DE: 7, DC: 8, FL: 9, GA: 10, HI: 11, ID: 12, IL: 13, IN: 14, IA: 15, KS: 16, KY: 17, LA: 18, ME: 19, MD: 20, MA: 21, MI: 22, MN: 23, MS: 24,
+			MO: 25, MT: 26, NE: 27, NV: 28, NH: 29, NJ: 30, NM: 31, NY: 32, NC: 33, ND: 34, OH: 35, OK: 36, OR: 37, PA: 38, RI: 39, SC: 40, SD: 41, TN: 42, TX: 43, UT: 44, VT: 45, VA: 46, WA: 47, WV: 48,
+			WI: 49, WY: 50
+		};
+		
+		fetch(url).then(function(response) {
+			response.json().then(function(data) {	
+				stateData = data;
+				console.log(stateData);
+			});
+		});
+		
+		
+		
+		$('#map').usmap({
+  		// The click action
+			click: function(event, data) {
+			  console.log(data);
+			  $('#clicked-state')
+			  .text('You clicked: '+ data.name)
+					let age = stateData.data[stateMap[data.name]][ageIndex];
+					let pop = stateData.data[stateMap[data.name]][popIndex];
+					let commute = stateData.data[stateMap[data.name]][commuteIndex];
+					let income = stateData.data[stateMap[data.name]][incomeIndex];
+					let incomeRank = stateData.data[stateMap[data.name]][incomeRankIndex];
+					let popRank = stateData.data[stateMap[data.name]][popRankIndex];
+					let medianValue = stateData.data[stateMap[data.name]][medianValueIndex];
+					
+					let arrayData = [pop, popRank, age, commute, income, incomeRank,  medianValue];
+				
+					for (let i = 0; i < fillData.length; i++) {
+						fillData[i].innerHTML = arrayData[i];
+					}
+					
+				
+//			  .parent().effect('highlight', {color: '#C7F464'}, 2000);
+		  }
+		});
+	});
+	
+
+</script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<footer>  
+</footer>
+
+</body>
+
+</html>
