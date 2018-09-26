@@ -1,0 +1,5 @@
+#Ignore server.js
+server.js
+
+#Ignore node_modules
+node_modules/

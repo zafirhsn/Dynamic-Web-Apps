@@ -10,11 +10,11 @@
 
 <style>
 	span {
-		display: block;
+		display: inline;
 	}
 	
 	.fillIn {
-		display: inline;
+		display: inline-block;
 	}
 </style>
 
@@ -61,7 +61,7 @@
 
 <script>
 	$(document).ready(function() {
-		let fillData = $("span");
+		let fillData = $(".fillIn");
 		
 		let stateData = {};
 		const url = 'https://api.datausa.io/api/?show=geo&sumlevel=state&required=age,pop,mean_commute_minutes,income,income_rank,pop_rank,median_property_value&year=latest'; 
