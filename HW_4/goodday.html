@@ -9,13 +9,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <style>
-	span {
-		display: inline;
-	}
-	
-	.fillIn {
+	h5 {
 		display: inline-block;
 	}
+
+	#map {
+		/*margin-left: 10%;*/
+	}
+
 </style>
 
 <!--jQuery must come first in order for the next libraries to work correctly-->
@@ -28,32 +29,44 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col">
+		<div class="col text-center">
 			<h1>U.S. State Data</h1>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col">
-			<div id="map" style="width: 350px; height: 250px;"></div>
-			<div id="clicked-state"></div>
+		<div class="col text-center">
+			<div id="map" style="width: 700px; height: 500px;"></div>
 		</div>	
 	</div>
 	<div class="row">
 		<div class="col">
-			<h2>{State}</h2>
-			<span> Population: </span>
-			<span class="fillIn"> Hello</span>
-			<span> Population Rank: </span>
+			<h2></h2>
+			<h5> Population: </h5> <span class="fillIn"> </span>
+			<br>
 			
-			<span> Median Age:  </span>
-			
-			<span> Mean Commute(minutes): </span>
-			
-			<span> Median Household Income: </span>
-			
-			<span> Rank of Income: </span>
-			
-			<span> Median Property Value: </span>
+			<h5> Population Rank: </h5>
+			<span class="fillIn"> </span>
+			<br>
+
+			<h5> Median Age:  </h5>
+			<span class="fillIn"> </span>
+			<br>
+
+			<h5> Mean Commute(minutes): </h5>
+			<span class="fillIn"> </span>
+			<br>
+
+			<h5> Median Household Income: </h5>
+			<span class="fillIn"> </span>
+			<br>
+
+			<h5> Rank of Income: </h5>
+			<span class="fillIn"> </span>
+			<br>
+
+			<h5> Median Property Value: </h5>
+			<span class="fillIn"> </span>
+			<br>
 			
 		</div>
 	</div>
@@ -62,6 +75,8 @@
 <script>
 	$(document).ready(function() {
 		let fillData = $(".fillIn");
+		let fillState = $("h2");
+		console.log(fillState);
 		
 		let stateData = {};
 		const url = 'https://api.datausa.io/api/?show=geo&sumlevel=state&required=age,pop,mean_commute_minutes,income,income_rank,pop_rank,median_property_value&year=latest'; 
@@ -90,24 +105,30 @@
 		
 		
 		$('#map').usmap({
+			stateStyles: {fill: '#a5a5a5'}, 
+			stateHoverStyles: {fill: '#4e0570'},
+			stateHoverAnimation: 300,
+			stateSpecificStyles: { 'NY': {fill: '#4e0570'}},
   		// The click action
 			click: function(event, data) {
-			  console.log(data);
-			  $('#clicked-state')
-			  .text('You clicked: '+ data.name)
-					let age = stateData.data[stateMap[data.name]][ageIndex];
-					let pop = stateData.data[stateMap[data.name]][popIndex];
-					let commute = stateData.data[stateMap[data.name]][commuteIndex];
-					let income = stateData.data[stateMap[data.name]][incomeIndex];
-					let incomeRank = stateData.data[stateMap[data.name]][incomeRankIndex];
-					let popRank = stateData.data[stateMap[data.name]][popRankIndex];
-					let medianValue = stateData.data[stateMap[data.name]][medianValueIndex];
-					
-					let arrayData = [pop, popRank, age, commute, income, incomeRank,  medianValue];
+
+			 	console.log(data);
+			 	
+				let age = stateData.data[stateMap[data.name]][ageIndex];
+				let pop = stateData.data[stateMap[data.name]][popIndex];
+				let commute = stateData.data[stateMap[data.name]][commuteIndex];
+				let income = stateData.data[stateMap[data.name]][incomeIndex];
+				let incomeRank = stateData.data[stateMap[data.name]][incomeRankIndex];
+				let popRank = stateData.data[stateMap[data.name]][popRankIndex];
+				let medianValue = stateData.data[stateMap[data.name]][medianValueIndex];
 				
-					for (let i = 0; i < fillData.length; i++) {
-						fillData[i].innerHTML = arrayData[i];
-					}
+				fillState[0].innerHTML =  data.name;
+
+				let arrayData = [pop, popRank, age, commute, income, incomeRank,  medianValue];
+			
+				for (let i = 0; i < fillData.length; i++) {
+					fillData[i].innerHTML = " " + arrayData[i];
+				}
 					
 				
 //			  .parent().effect('highlight', {color: '#C7F464'}, 2000);
