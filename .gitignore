@@ -3,3 +3,6 @@ server.js
 
 #Ignore node_modules
 node_modules/
+
+#Ignore .vscode debugging 
+.vscode/
