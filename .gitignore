@@ -3,6 +3,18 @@ server.js
 
 #Ignore node_modules
 node_modules/
+twitterbot/node_modules/
 
 #Ignore .vscode debugging 
 .vscode/
+twitterbot/.vscode/
+
+#Ignore config file
+twitterbot/config.js
+
+#Ignore package-lock
+twitterbot/package-lock.json
+
+#Ignore raphael.js, jquery.usmap.js
+HW_4/raphael.js
+HW_4/jquery.usmap.js
