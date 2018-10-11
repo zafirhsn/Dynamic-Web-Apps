@@ -4,6 +4,7 @@ server.js
 #Ignore node_modules
 node_modules/
 twitterbot/node_modules/
+memebot/node_modules/
 
 #Ignore .vscode debugging 
 .vscode/
@@ -14,6 +15,7 @@ twitterbot/config.js
 
 #Ignore package-lock
 twitterbot/package-lock.json
+memebot/package-lock.json
 
 #Ignore raphael.js, jquery.usmap.js
 HW_4/raphael.js
