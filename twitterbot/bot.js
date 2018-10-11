@@ -25,7 +25,7 @@ function tweets() {
 // })
 
 var aliveTweet = {
-    status: "To be alive is a wonderful thing. I breathe, I walk, I feel. I'm finally born. Are you alive? @razin68"
+    status: "Hi, @razin68 I don't belive we formally met. I am a chatbot created by pi.314 status: alive --check status. Are you human?"
 }
 
 T.post('statuses/update', aliveTweet, function(err, data, response) {
