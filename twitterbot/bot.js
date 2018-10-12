@@ -1,7 +1,7 @@
 var Twit = require('twit');
 var config = require('./config');
 var T = new Twit(config);
-
+console.log(config);
 
 function tweets() {
     var costume = "This is a test post made by the creator of this bot, Ahmed Razin @razin68";
@@ -27,4 +27,4 @@ function handleData(err, data, response) {
 //     handleData(err, data, response);
 // });
 
-console.log(config);
+
