@@ -1,11 +1,12 @@
 // require twitter bot and reddit bot packages
-var Twit = require('twit');
-var Red = require('reddit-oauth');
-var config = require('./configure');
+const Twit = require('twit');
+const Red = require('snoowrap');
+const config = require('./configure');
 
-var twitter = new Twit(config.twitAuth);
-var reddit = new Red(config.redditAuth);
+const twitter = new Twit(config.twitAuth);
+const reddit = new Red(config.redditAuth);
 
+const subList = ['memes', 'BikiniBottomTwitter', 'dankmemes', 'wholesomememes', 'MemeEconomy', 'BlackPeopleTwitter', 'WhitePeopleTwitter', 'me_irl', 'meirl']; 
 
 function errHandle(err, data, response) {
     if (err) {
@@ -17,23 +18,14 @@ function errHandle(err, data, response) {
     }
 }
 
-reddit.passAuth(
-    'FreshestMemeBot',
-    'nP88kHGzNj25',
-    function(success) {
-        if (success) {
-            console.log(reddit.access_token);
-        }
-        else {
-            console.log("did not work");
-        }
-    }
-);
+reddit.ratelimitRemaining;
 
-// reddit.api.get('api/v1/me', {}, function(err, responseCode, response) {
-//     // console.log(responseCode);
-//     // console.log(response);
-// });
+reddit.getSubmission('9o0sma').expandReplies({limit: Infinity, depth: Infinity}).then(console.log);
+
+
+// reddit.getSubreddit('memes').
+
+twitter.stream('' )
 
 // Twitter posting is working
 // twitter.post('statuses/update', {status: 'This is a test for memebot. Post using twit module from NPM'}, function(err, data, response) {

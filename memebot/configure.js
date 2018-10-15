@@ -1,10 +1,11 @@
 module.exports.redditAuth = {
-        // username: 'FreshestMemeBot',
-        // password: 'nP88kHGzNj25',
-        app_id: 'lTg0SwQHHcetIA', 
-        app_secret: 'Hmw8tv7AsqAIEvCdOp9xwAE70v8',
-        //user_agent: '', 
-        
+
+        user_agent: 'Node.js:Freshest Meme Bot:v1.0 (by /u/FreshesMemeBot)',
+        clientId: '6fFGX0sYgdW4Gg', 
+        clientSecret: 'rBLbCcC-5-CSAY10ZrWbyRVm_Ao',
+        username: 'FreshestMemeBot',
+        password: 'nP88kHGzNj25',
+        // redirect_uri: 'http://localhost:8080',  
         // automatic_retries: true,
         // api_requests_per_minute: 60 // api requests will be spread out in order to play nicely with Reddit
 }
