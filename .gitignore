@@ -9,15 +9,12 @@ memebot/node_modules/
 #Ignore .vscode debugging 
 .vscode/
 twitterbot/.vscode/
-memebot/.vscode/
 
 #Ignore config file
 twitterbot/config.js
-memebot/configure.js
 
 #Ignore package-lock
 twitterbot/package-lock.json
-memebot/package-lock.json
 
 #Ignore raphael.js, jquery.usmap.js
 HW_4/raphael.js
