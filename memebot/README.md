@@ -23,7 +23,8 @@ Reddit: https://www.reddit.com/wiki/api
 Twitter: https://developer.twitter.com/en.html 
 
 ### Configure.js
-Use your credential information to fill in the fields within configure.js
+create a file called configure.js and place it into your local memebot directory. Copy and paste the following code into configure.js
+and fill in the fields with your own info retrieved from Twitter and Reddit. 
 
 ```sh
 module.exports.redditAuth = {
