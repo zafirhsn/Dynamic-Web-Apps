@@ -1,0 +1,15 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description": "Playing with express for the first time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zafir",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4"
+  }
+}

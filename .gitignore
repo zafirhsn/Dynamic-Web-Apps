@@ -5,17 +5,24 @@ server.js
 node_modules/
 twitterbot/node_modules/
 memebot/node_modules/
+expressapp/node_modules/
 
 #Ignore .vscode debugging 
 .vscode/
 twitterbot/.vscode/
+memebot/.vscode/
 
 #Ignore config file
 twitterbot/config.js
+memebot/configure.js
 
 #Ignore package-lock
 twitterbot/package-lock.json
+memebot/package-lock.json
 
 #Ignore raphael.js, jquery.usmap.js
 HW_4/raphael.js
 HW_4/jquery.usmap.js
+
+#ignore all jpgs
+memebot/*.jpg

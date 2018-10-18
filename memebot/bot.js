@@ -14,7 +14,7 @@ const subList = ['memes', 'BikiniBottomTwitter', 'dankmemes', 'wholesomememes', 
 //The top meme from each subreddit in subList
 let topMemes = [];
 
-// The very top meme post from all top memess from topMemes
+// The very top meme post from all top memes from topMemes
 let topPost = {};
 
 // Counter to keep track of the most upvoted meme
@@ -51,7 +51,7 @@ function postMeme(path, altText, Status) {
 		// We're now referencing the media and going to create a status to go along with it
 		twitter.post('media/metadata/create', meta_params, function (err, data, response) {
 				if(!err) {
-						var params = {status: Status, media_id: [mediaIdStr] }
+						var params = {status: Status, media_id: mediaIdStr }
 						// Let's post a status using params as the status object
 						twitter.post('statuses/update', params, function(err, data, response) {
 								console.log(data);
