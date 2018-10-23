@@ -2,6 +2,7 @@
 server.js
 
 #Ignore node_modules
+*/node_modules/
 node_modules/
 twitterbot/node_modules/
 memebot/node_modules/
@@ -19,6 +20,7 @@ memebot/configure.js
 #Ignore package-lock
 twitterbot/package-lock.json
 memebot/package-lock.json
+*/package-lock.json
 
 #Ignore raphael.js, jquery.usmap.js
 HW_4/raphael.js
