@@ -35,7 +35,7 @@ app.set('view engine', 'ejs')
 // blog home page
 app.get('/', (req, res) => {
   // render `home.ejs` with the list of posts
-  res.render('home', { posts: posts[0].author })
+  res.render('home', { posts: posts })
 })
 
 // blog post

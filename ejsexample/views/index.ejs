@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Let's Use EJS</title>
+
+
+</head>
+<body>
+    <h1>What is the data and time?</h1>
+    <% for(let i = 0; i < groceries.length; i++) { %>
+        <h1> <%= groceries[i].store %> Iventory </h1>
+        <ul>
+            <% groceries[i].list.forEach(function(item, index) { %>
+                <li> <%= item %> </li>
+            <% }) %>
+        </ul>
+    <% } %>
+    <script>
+
+
+</script>
+</body>
+</html>

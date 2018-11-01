@@ -1,15 +1,17 @@
 {
-  "name": "groceryapp",
+  "name": "weatherapp",
   "version": "1.0.0",
-  "description": "Grocery app",
-  "main": "index.js",
+  "description": "Weather App using weather API",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Zafir Hasan",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "node-fetch": "^2.2.0"
   }
 }
