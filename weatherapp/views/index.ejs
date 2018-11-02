@@ -5,6 +5,7 @@
     <title>Test</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
     <div class="container">
@@ -14,6 +15,29 @@
           <input type="submit" class="ghost-button" value="Get Weather">
         </form>
       </fieldset>
+
+      <div>
+        <p id="temp"> <%= (data - 273.15)* (9.0/5.0) + 32 %></p>
+      </div>
     </div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('#temp').hide();
+        $('#temp').fadeIn(300, function(){
+          console.log("Fade in animation complete");
+        });
+        
+        // 
+        
+      });
+
+    </script>
+
   </body>
 </html>
