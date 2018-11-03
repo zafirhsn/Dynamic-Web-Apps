@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = 3000;
 
-const client_id = 'c279ef65ab3548b18096c7d13f1819e4'; // Your client id
+const client_id = 'YOUR CLIENT ID'; // Your client id
 const client_secret = 'YOUR CLIENT SECRET'; // Your secret
 const redirecturi = 'http://localhost:' + port + '/info';
 
