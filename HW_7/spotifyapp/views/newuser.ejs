@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h3>Thank you for signing in! You will be redirected to your Spotify Login soon...</h3>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+    <script>
+       $(document).ready(function() { 
+       setTimeout(function() {
+ 
+          var querystring = "<%= response_type %>" + "&client_id=" + "<%= client_id %>" + "&scope=" + "<%= scope %>" + "&redirect_uri=http:%2F%2Flocalhost:3000%2Finfo" + "&state=" + "<%= state %>";
+          window.location = "https://accounts.spotify.com/authorize?response_type=" + querystring;
+          }, 2000)
+       });
+      </script>
+  </body>
+</html>

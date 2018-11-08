@@ -1,5 +1,6 @@
 const app = require('express')();
 const ejs = require('ejs');
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const request = require('request'); // "Request" library
 const querystring = require('querystring'); // To pass certain parameters in our request header  
@@ -36,27 +37,32 @@ function randomString(length) {
 // Key for the state when we store it in a cookie
 let stateKey = 'spotify_auth_state';
 
+var exists = fs.existsSync('database.json');
+if (exists) {
+  console.log('Loading database');
+  var txt = fs.readFileSync('database.json', 'utf-8');
+  data = JSON.parse(txt);
+}
 
 app.get('/', (req, res) => {
   res.render('index');
-  
-  // Create state string
-  // var state = randomString(16);
+});
 
-  // // Store key/value pair as cookie to be accessed later
-  // res.cookie(stateKey, state);
+app.post('/', (req,res) => {
+  console.log(req.body);
+  let email = req.body.emailInput;
+  let pass = req.body.passInput;
+  data['email'] = email;
+  data['pass'] = pass;
+  let dataString = JSON.stringify(data);
+  fs.writeFile('database.json', dataString, function() {
+    console.log("Saved info to database...");
+  });
 
-  // // Redirect user to authorize use of their info
-  // res.redirect('https://accounts.spotify.com/authorize?' + 
-  //   // Very useful module
-  //   querystring.stringify({
-  //     response_type: 'code',
-  //     client_id: client_id,
-  //     scope: scope,
-  //     redirect_uri: redirecturi,
-  //     state: state
-  //   }));
-  
+  var state = randomString(16);
+  res.cookie(stateKey, state);
+
+  res.render('newuser', { response_type:'code', client_id: client_id, scope: scope, state: state });
 });
 
 // Redirect user to this page after authorization
@@ -98,7 +104,7 @@ app.get('/info', (req, res) => {
         console.log(refresh_token);
       }
     });
-    res.render('home', { items: [ ] , type: ''});
+    res.render('data', { items: [ ] , type: ''});
   }  
 });
 
@@ -125,7 +131,7 @@ app.post('/info', (req, res) => {
       if (!error && response.statusCode === 200) {
         console.log(options.url);
         // res.send(body.items);
-        res.render('home', { items: body.items, type: 'top-tracks'} );
+        res.render('data', { items: body.items, type: 'top-tracks'} );
       
       }
       else {
@@ -147,7 +153,7 @@ app.post('/info', (req, res) => {
       if (!error && response.statusCode === 200) {
         console.log(body);
         // res.send(body);
-        res.render('home', { items: body.items, type: 'top-artists'} );
+        res.render('data', { items: body.items, type: 'top-artists'} );
       
       }
       else {
