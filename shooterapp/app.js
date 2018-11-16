@@ -23,14 +23,10 @@ var x = 50;
 var y = 100;
 io.on('connection', (socket)=> {
   console.log('a user connected');
-  socket.on('entered', (data)=> {
-    var newData = {
-      x: x + 100,
-      y: y
-    }
-    x += 100;
-    io.emit('entered', newData);
-  });
+
+  io.to(socket.id).emit('hello', {hello: true});
+
+});
 
   // console.log(socket.id);
   // data['users'] += 1;
@@ -39,7 +35,6 @@ io.on('connection', (socket)=> {
   //   console.log(data['users']);
   // });
 
-});
 
 
 http.listen(3000, ()=> {

@@ -1,4 +1,5 @@
 var socket;
+var player1;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -7,7 +8,16 @@ function setup() {
 
   socket = io.connect('http://localhost:3000'); 
 
+  socket.on('hello', (data)=> {
+    console.log(data);
+  });
+
+  socket.on('newPlayer', (data)=> {
+    data.connected
+  })
+  
   socket.emit('entered', {});
+
   socket.on('entered', newDraw);
 }
 
@@ -17,7 +27,11 @@ function newDraw(data) {
 }
 
 function draw() {
-  
+  // mouseCoor();
+}
+
+function mouseCoor() {
+  console.log('x: ' + mouseX + ', y: ' + mouseY);
 }
 
 
