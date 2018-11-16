@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = 3000;
 
-const client_id = 'YOUR CLIENT ID'; // Your client id
-const client_secret = 'YOUR CLIENT SECRET'; // Your secret
+const client_id = 'c279ef65ab3548b18096c7d13f1819e4'; // Your client id
+const client_secret = 'e3f00cef9c304a5db23fb1f126c2a55a'; // Your secret
 const redirecturi = 'http://localhost:' + port + '/info';
 
 // The scope of info I need from the user (I need to read their top tracks/artists)
