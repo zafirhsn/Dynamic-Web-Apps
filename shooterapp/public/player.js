@@ -7,15 +7,19 @@ function Player(xpos, ypos) {
   this.update = function() {
     if (keyIsDown(LEFT_ARROW)) {
       this.xpos -= 10;
+      // return true;
     }
     if (keyIsDown(RIGHT_ARROW)) {
       this.xpos += 10;
+      // return true;
     }
     if (keyIsDown(DOWN_ARROW)) {
       this.ypos += 10;
+      // return true;
     }
     if (keyIsDown(UP_ARROW)) {
       this.ypos -= 10;
+      // return true;
     }
 
   };
