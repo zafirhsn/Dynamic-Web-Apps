@@ -24,7 +24,11 @@ var y = 100;
 io.on('connection', (socket)=> {
   console.log('a user connected');
 
-  io.to(socket.id).emit('hello', {hello: true});
+  io.to(socket.id).emit('newUser', {});
+  socket.on('newUser', (user)=> {
+    socket.broadcast.emit('addedPlayer', user);
+    console.log(user);
+  })
 
 });
 

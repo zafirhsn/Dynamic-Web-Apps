@@ -1,16 +1,30 @@
 function Player(xpos, ypos) {
-  this.xpos = xpos,
-  this.ypos = ypos,
-  this.dead = false,
-  this.color = Player.prototype.colorBank[Math.floor((Math.random() * Player.prototype.colorBank.length))],
-  this.update = function() {
+  this.xpos = xpos;
+  this.ypos = ypos;
+  this.dead = false;
+  this.color = Player.prototype.colorBank[Math.floor(Math.random() * Player.prototype.colorBank.length)];
 
-  },
+  this.update = function() {
+    if (keyIsDown(LEFT_ARROW)) {
+      this.xpos -= 10;
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+      this.xpos += 10;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+      this.ypos += 10;
+    }
+    if (keyIsDown(UP_ARROW)) {
+      this.ypos -= 10;
+    }
+
+  };
 
   this.display = function() {
-
+    stroke(0);
+    fill(this.color);
+    ellipse(this.xpos, this.ypos, 80, 80);
   }
-
 
 }
 

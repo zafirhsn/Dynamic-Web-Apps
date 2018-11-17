@@ -1,5 +1,5 @@
 var socket;
-var player1;
+var playerArray = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -7,27 +7,33 @@ function setup() {
   // data = loadJSON(dbURL, drawEllipse);
 
   socket = io.connect('http://localhost:3000'); 
+  socket.on('newUser', createPlayer);
+  socket.on('addedPlayer', addPlayer);
 
-  socket.on('hello', (data)=> {
-    console.log(data);
-  });
 
-  socket.on('newPlayer', (data)=> {
-    data.connected
-  })
-  
-  socket.emit('entered', {});
 
-  socket.on('entered', newDraw);
 }
 
-function newDraw(data) {
-  ellipse(data.x, data.y, 80, 80);
-  console.log('Recieved event');
+function addPlayer(user) {
+  playerArray[playerArray.length] = user;
+}
+
+function createPlayer() {
+  playerArray[playerArray.length] = new Player(100,100);
+  // console.log(playerArray[playerArray.length - 1]);
+  socket.emit('newUser', playerArray[playerArray.length - 1]);
+
 }
 
 function draw() {
-  // mouseCoor();
+  clear();
+  // console.log(player1);
+  for (let i = 0; i < playerArray.length; i++) {
+    playerArray[i].update();
+  }
+  for (let i = 0; i < playerArray.length; i++) {
+    playerArray[i].display();
+  }
 }
 
 function mouseCoor() {
