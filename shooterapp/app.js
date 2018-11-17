@@ -43,11 +43,11 @@ io.on('connection', (socket)=> {
   });
 
   // When a client disconnects, remove their data from player array and broadcast change to all other clients
-  socket.on('disconnect', (data, playerIndex)=> {
-    console.log('User ' + playerIndex + ' has disconnected');
-    playerArray[playerIndex] = {};
-    socket.broadcast.emit('exitPlayer', { exitIndex: playerIndex } );
-  });
+  // socket.on('disconnect', (data, playerIndex)=> {
+  //   console.log('User ' + playerIndex + ' has disconnected');
+  //   playerArray[playerIndex] = {};
+  //   socket.broadcast.emit('exitPlayer', { exitIndex: playerIndex } );
+  // });
 
 });
 

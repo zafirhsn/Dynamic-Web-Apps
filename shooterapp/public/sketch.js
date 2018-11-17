@@ -79,7 +79,7 @@ function draw() {
 
   for (let i = 0; i < playerArray.length; i++) {
     if (playerArray[i] !== {}) {
-     playerArray[i].display();
+      playerArray[i].display();
     }
   }
 }
