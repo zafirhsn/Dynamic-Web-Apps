@@ -12,7 +12,9 @@ io.on('connection', (data) => {
     data.on('disconnect', () => {
         console.log('User disconnected');
     });
-    data.emit('news', {hello: 'world'});
+    data.on('chat message', (msg)=> {
+        console.log(msg);
+    });
     
 });
 

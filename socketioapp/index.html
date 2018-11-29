@@ -17,9 +17,10 @@
         <script src="/socket.io/socket.io.js"></script>
         <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
         <script>
-            var socket = io('http://localhost:3000');
-            socket.on('news', (data) => {
-                console.log(data);
+            var socket = io();
+            $("form").submit(()=> {
+                io.emit('chat message', $('#m').val());
+                return false;
             });
             
         </script> 
